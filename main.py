@@ -115,7 +115,7 @@ def render_video(topic: str, script: str, voice: str, output_name: str) -> Path:
     else:
         video_input = ["-f", "lavfi", "-i", f"color=c=#101827:s={WIDTH}x{HEIGHT}:r={FPS}:d={duration}"]
         visual = f"fps={FPS},"
-    srt_path = str(srt).replace("\\", "/").replace(":", r"\\:")
+    srt_path = str(srt).replace("\\", "/").replace(":", r"\:")
     vf = visual + f"subtitles='{srt_path}':force_style='FontName=Arial,FontSize=18,PrimaryColour=&H00FFFFFF,OutlineColour=&H00101827,BorderStyle=1,Outline=3,Shadow=1,Alignment=2,MarginV=260,MarginL=90,MarginR=90'"
     cmd = ["ffmpeg", "-y", *video_input, "-i", str(audio), "-t", f"{duration:.2f}",
            "-vf", vf, "-map", "0:v:0", "-map", "1:a:0", "-c:v", "libx264",
