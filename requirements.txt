@@ -1,1 +1,2 @@
-edge-tts>=7.0.0\nrequests>=2.32.0\n
+edge-tts>=7.0.0
+requests>=2.32.0
